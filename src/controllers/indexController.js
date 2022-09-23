@@ -24,11 +24,54 @@ exports.test = async function (req, res) {
             y: randY,
             label: label, // 랜덤생성
             group: group, // 랜덤생성
-            code: "대충코드임"
+            code: `import re
+                import sys
+                
+                input = sys.stdin.readline
+                
+                queue = []
+                
+                N = int(input())
+                point = 0
+                
+                for i in range(N):
+                    command = input()
+                    if 'push' in command:
+                        data = re.findall("\\d+", command)
+                        queue.append(int(data[0]))
+                
+                    elif 'pop' in command:
+                        if (len(queue) - point) <= 0:
+                            print("-1")
+                        else:
+                            print(queue[point])
+                            point += 1
+                
+                    elif 'size' in command:
+                        print(len(queue) - point)
+                
+                    elif 'empty' in command:
+                        if (len(queue) - point) <= 0:
+                            print("1")
+                        else:
+                            print("0")
+                
+                    elif 'front' in command:
+                        if (len(queue) - point) <= 0:
+                            print("-1")
+                        else:
+                            print(queue[point])
+                
+                    elif 'back' in command:
+                        if (len(queue) - point) <= 0:
+                            print("-1")
+                        else:
+                            print(queue[-1])
+`
         }
         students.push(student);
     }
 
-    res.json(students)
+    res.json(students);
 
 }
