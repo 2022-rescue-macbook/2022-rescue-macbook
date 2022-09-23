@@ -2,4 +2,3 @@
 import sys
 
 print("output from python")
-sys.stdout.flush()
